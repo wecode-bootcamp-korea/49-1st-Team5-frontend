@@ -1,0 +1,60 @@
+.joinDoneMain {
+    width: 576px;
+    height: 844px;
+    border-radius: 16px;
+    margin: 30px;
+    border: 1px solid #E5E5E5;
+    text-align: center;
+  
+    .deadHeader {
+      height: 56px;
+    }
+
+    img {
+        width: 40px;
+        height: 40px;
+      }
+    .joinDoneImg {
+      height: 620px;      
+      gap: 40px;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  
+      img {
+        width: 136px;
+        height: 136px;
+      }
+
+      div {
+        gap: 16px;
+        text-align: center;
+        font-family: Apple SD Gothic Neo;
+
+        p:first-child {
+          font-size: 24px;
+          font-weight: 800;
+        }
+        p:last-child {
+          font-size: 20px;
+          font-weight: 400;
+          color: #999999;
+        }
+    }
+
+    }
+      button {
+        padding: 0px 24px 0px 24px;
+        background-color: #2D71F7;
+        color: #FFFFFF;
+        border: none;
+        margin-top: 24px;
+        font: Apple SD Gothic Neo;
+  
+        &:hover {
+          background-color: #083E7F;
+          }
+      }
+}
