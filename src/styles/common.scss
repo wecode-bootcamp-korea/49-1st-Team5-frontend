@@ -1,0 +1,30 @@
+input::placeholder {
+  color: #999;
+}
+
+input:active {
+  border: 1px solid black;
+  color: black;
+
+  &::placeholder {
+    color: black;
+  }
+}
+
+input:focus {
+  border: 1px solid black;
+  color: black;
+
+  &::placeholder {
+    color: black;
+  }
+}
+
+input:disabled {
+  border: 1px solid #e0e0e0;
+  color: #999;
+
+  &::placeholder {
+    color: #999;
+  }
+}
