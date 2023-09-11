@@ -237,6 +237,10 @@
       background: #2d71f7;
       align-self: stretch;
       margin-top: 24px;
+
+      &:disabled {
+        background: gray;
+      }
     }
   }
 }

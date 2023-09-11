@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Main.scss";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
   const [userData, setUserData] = useState([]);
@@ -37,6 +38,8 @@ const Main = () => {
     setShowList(storage);
   }, [userData, pageNumber]);
 
+  const navigator = useNavigate();
+
   console.log(showList);
   return (
     <div className="main-container">
@@ -60,7 +63,14 @@ const Main = () => {
         })}
       </div>
       <div className="main-footer">
-        <button className="main-create-btn">글 쓰기</button>
+        <button
+          className="main-create-btn"
+          onClick={() => {
+            navigator("/createthread");
+          }}
+        >
+          글 쓰기
+        </button>
       </div>
     </div>
   );
