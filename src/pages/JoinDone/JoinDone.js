@@ -2,7 +2,7 @@ import React from "react";
 import "./JoinDone.scss";
 import { Link, useNavigate } from "react-router-dom";
 import banner_square from "../../assets/images/banner_square.png"
-import back from "../../assets/images/back.png"
+// import back from "../../assets/images/back.png"
 
 
 const JoinDone = () => {
@@ -15,10 +15,10 @@ const JoinDone = () => {
   return(
     <div className="main">
       <div className="joinDoneMain">
-        <header>
-          <Link to="/">
+        <header className="deadHeader">
+          {/* <Link to="/">
             <img className="backToLogin" src={back} alt="뒤로"/>
-          </Link>뒤로
+          </Link>뒤로 */}
         </header>
         <div className="joinDoneImg">
           <img src={banner_square} alt="회원가입 완료"/>

@@ -10,7 +10,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const goToMain = () => {
-    navigate("/main") 
+    navigate("/") 
  }
     // fetch("http://10.58.52.134:8000/users/login", {
     //   method: "POST",
@@ -22,19 +22,29 @@ const Login = () => {
     //     name: "mjpark",
     //     password: "123456789@",
     //   }),
-    // });
-    
+    // })
+    // .then((res) => {res.json})
+    // .then((result) => {
+    //   if (res.success){
+    //       alert("로그인 완료");
+    //    }
+    //   });
 
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+  });
 
-  const [userId, setUserId] = useState("");
-  const [userPw, setUserPw] = useState("");
+  const { email, password } = userInfo;
 
-  
-  const saveUserId = (event) =>{setUserId(event.target.value)};
-  const saveUserPw = (event) =>{setUserPw(event.target.value)};
+  const handleUserInfo = (event) => {
+    const { name, value } = event.target;
 
-  const activeButton = userId.includes('@') && userId.includes('.') && userPw.length >= 10;
-  console.log(activeButton);
+    setUserInfo({ ...userInfo, [name]: value });
+  };
+
+  console.log(userInfo);
+  const isActiveButton = email.includes('@') && email.includes('.') && password.length >= 10;
 
 
   return (
@@ -45,13 +55,22 @@ const Login = () => {
           <img className="name" src={name} alt="위코드 이름" />
         </div>       
         <form className="login_form">
-          <input type="text" placeholder="이메일" className="mail" onChange={saveUserId} required/>
-          <input type="password" placeholder="비밀번호" className="password" onChange={saveUserPw} required/>
+          <input 
+            type="text" 
+            placeholder="이메일" 
+            name="email"
+            onChange={handleUserInfo} required/>
+          <input 
+            type="password" 
+            placeholder="비밀번호" 
+            name="password" 
+            onChange={handleUserInfo} required/>
           <button type="button" 
                   onClick={goToMain} 
-                  // className={`${activeButton ? "active" : "disabled"}`}
-                  style={{backgroundColor: activeButton ? "" : "gray" }} 
-                  disabled = {!activeButton}>로그인
+                  className={`loginButton ${isActiveButton ? "" : "disabled"}`} 
+                  disabled={!isActiveButton}
+
+                  >로그인
           </button>
         </form>          
         <ul className="search">
