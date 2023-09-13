@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ModifyThread.scss";
+import Button from "../../components/button/Button";
 
 const ModifyThread = () => {
   const [modifyData, setModifyData] = useState({
@@ -35,8 +36,12 @@ const ModifyThread = () => {
         </div>
 
         <div className="thread-footer">
-          <button className="thread-footer-cancel">취소</button>
-          <button className="thread-footer-create">게시</button>
+          <Button scale="small" shape="outLine">
+            취소
+          </Button>
+          <Button scale="small" shape="fill">
+            게시
+          </Button>
         </div>
       </div>
     </div>

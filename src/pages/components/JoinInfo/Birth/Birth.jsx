@@ -2,6 +2,8 @@ import React from "react";
 import "./Birth.scss";
 
 const Birth = (props) => {
+  const { year, years, month, months, day, days, dateForm, setDateForm } =
+    props;
   return (
     <form className="user-information">
       <div className="option-information">
@@ -12,12 +14,12 @@ const Birth = (props) => {
       <div className="birth-input">
         <select
           className="select-box-one"
-          value={props.Birthyear}
+          value={year}
           onChange={(e) => {
-            props.setDateForm({ ...props.dateForm, year: e.target.value });
+            setDateForm({ ...dateForm, year: e.target.value });
           }}
         >
-          {props.years.map((item) => {
+          {years.map((item) => {
             return (
               <option value={item} key={item}>
                 {item}년
@@ -27,12 +29,12 @@ const Birth = (props) => {
         </select>
         <select
           className="select-box-two"
-          value={props.month}
+          value={month}
           onChange={(e) => {
-            props.setDateForm({ ...props.dateForm, month: e.target.value });
+            setDateForm({ ...dateForm, month: e.target.value });
           }}
         >
-          {props.months.map((item) => {
+          {months.map((item) => {
             return (
               <option value={item} key={item}>
                 {item}월
@@ -42,12 +44,12 @@ const Birth = (props) => {
         </select>
         <select
           className="select-box-two"
-          value={props.day}
+          value={day}
           onChange={(e) => {
-            props.setDateForm({ ...props.dateForm, day: e.target.value });
+            setDateForm({ ...dateForm, day: e.target.value });
           }}
         >
-          {props.days.map((item) => {
+          {days.map((item) => {
             return (
               <option value={item} key={item}>
                 {item}일

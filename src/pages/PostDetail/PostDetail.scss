@@ -1,0 +1,24 @@
+@import "/src/components/button/Button.scss";
+
+.postdetail {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+
+  .postdetail-container {
+    display: flex;
+    padding: 0 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+
+    .postdetail-back {
+      display: flex;
+      height: 56px;
+      align-items: center;
+    }
+  }
+}

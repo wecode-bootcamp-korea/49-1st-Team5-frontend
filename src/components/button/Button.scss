@@ -1,0 +1,102 @@
+.btn {
+  display: flex;
+  height: 56px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  margin-top: 24px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+
+  // props 정리
+  // scale : large(부모요소 100%), small(120px)
+  // shape : fell(배경색 O, 보더 X), outLine(배경색 X, 보더 O), icon, text(배경색 X, 보더 X), Content (메인 전용)
+  // disabled : true(배경색 : gray), false
+
+  &[scale="large"] {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &[scale="small"] {
+    width: 120px;
+    padding: 0 34px 0 34px;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+  }
+
+  &[shape="fill"] {
+    border: none;
+    background: #2d71f7;
+    color: #fff;
+  }
+
+  &[shape="outLine"] {
+    border: 1px solid #2d71f7;
+    background: #fff;
+    color: #2d71f7;
+  }
+
+  &[shape="icon"] {
+    border: none;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 0;
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  &[shape="text"] {
+    border: none;
+    background: none;
+    height: auto;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #999;
+
+    &[color="red"] {
+      color: #ff3636;
+    }
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  &[shape="content"] {
+    border: none;
+    background: transparent;
+    height: auto;
+    margin: 0;
+    text-align: left;
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  &[disabled] {
+    background: gray;
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: #083e7f;
+  }
+
+  &.disabled {
+    background-color: gray;
+  }
+}
