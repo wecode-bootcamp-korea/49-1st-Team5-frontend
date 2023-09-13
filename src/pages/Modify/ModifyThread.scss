@@ -85,14 +85,6 @@
       padding-bottom: 40px;
       border-top: 1px solid #e6e6e6;
     }
-
-    .thread-footer-cancel {
-      @include btnStyle(#fff, #2d71f7, #2d71f7);
-    }
-
-    .thread-footer-create {
-      @include btnStyle(#2d71f7, #fff, #fff);
-    }
   }
 }
 

@@ -7,17 +7,19 @@ import Main from "./pages/Main/Main";
 import JoinInfo from "./pages/JoinInfo/JoinInfo";
 import CreateThread from "./pages/Create/CreateThread";
 import ModifyThread from "./pages/Modify/ModifyThread";
+import PostDetail from "./pages/PostDetail/PostDetail";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/joindone" element={<JoinDone />}></Route>
-        <Route path="/joininfo" element={<JoinInfo />}></Route>
-        <Route path="/createthread" element={<CreateThread />}></Route>
-        <Route path="/modifythread" element={<ModifyThread />}></Route>
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/joindone" element={<JoinDone />} />
+        <Route path="/joininfo" element={<JoinInfo />} />
+        <Route path="/createthread" element={<CreateThread />} />
+        <Route path="/modifythread" element={<ModifyThread />} />
+        <Route path="/main/:idx" element={<PostDetail />} />
       </Routes>
     </BrowserRouter>
   );

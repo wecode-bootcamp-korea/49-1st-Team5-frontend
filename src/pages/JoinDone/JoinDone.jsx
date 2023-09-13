@@ -2,6 +2,7 @@ import React from "react";
 import "./JoinDone.scss";
 import { Link, useNavigate } from "react-router-dom";
 import banner_square from "../../assets/images/banner_square.png";
+import Button from "../../components/button/Button";
 // import back from "../../assets/images/back.png"
 
 const JoinDone = () => {
@@ -26,9 +27,17 @@ const JoinDone = () => {
           </div>
         </div>
         <footer>
-          <button type="button" onClick={goToMain}>
-            확인
-          </button>
+          <div className="joinDonefooter">
+            <Button
+              scale="large"
+              shape="fill"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              확인
+            </Button>
+          </div>
         </footer>
       </div>
     </div>
