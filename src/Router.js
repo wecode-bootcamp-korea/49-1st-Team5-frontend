@@ -7,6 +7,7 @@ import Main from "./pages/Main/Main";
 import JoinInfo from "./pages/JoinInfo/JoinInfo";
 import CreateThread from "./pages/Create/CreateThread";
 import ModifyThread from "./pages/Modify/ModifyThread";
+import PostDetail from "./pages/PostDetail/PostDetail";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
         <Route path="/joininfo" element={<JoinInfo />}></Route>
         <Route path="/createthread" element={<CreateThread />}></Route>
         <Route path="/modifythread" element={<ModifyThread />}></Route>
+        <Route path="/postdetail" element={<PostDetail />}></Route>
       </Routes>
     </BrowserRouter>
   );

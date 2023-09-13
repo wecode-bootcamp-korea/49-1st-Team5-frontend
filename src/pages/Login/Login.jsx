@@ -3,6 +3,7 @@ import "./Login.scss";
 import logo from "../../assets/images/Logo.png";
 import name from "../../assets/images/logo_wecode.png";
 import { Link, useNavigate } from "react-router-dom";
+import Input from "../../components/Input/Input";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,19 +25,21 @@ const Login = () => {
   );
   const isActiveButton = regex.test(email) && password.length >= 10;
 
+  console.log(userInfo);
+
   const goToMain = () => {
-    navigate("/");
+    // navigate("/");
 
     // const JoinToken = localStorage.getItem("JoinToken");
 
     // if (!JoinToken) {
     //   alert("회원가입을 먼저 진행해주세요");
-    //   navigate("/JoinInfo");
+    navigate("/JoinInfo");
     // }
 
     //////////////////////////
 
-    // fetch("http://10.58.52.134:8000/users/login", {
+    // fetch("http://10.58.52.106:8000/users/login", {
     //   method: "POST",
     //   headers: {
     //     "Content-Type": "application/json;charset=utf-8",
@@ -48,12 +51,12 @@ const Login = () => {
     // })
     //   .then((res) => res.json())
     //   .then((result) => {
-    //     if (result.message === "SUCCESS") {
+    //     if (result.message === "LOGIN_COMPLETE") {
     //       localStorage.setItem("token", result.token);
     //       navigate("/");
-    //     } else if (result.message === >"EMAIL_OR_PASSWORD_ERROR") {
+    //     } else if (result.message === "EMAIL_OR_PASSWORD_ERROR") {
     //       alert("아이디, 비밀번호를 확인해주세요");
-    //     } else if (result.message === >"PASSWORD_LENGTHERROR") {
+    //     } else if (result.message === "PASSWORD_LENGTHERROR") {
     //       alert("비밀번호를 확인해주세요");
     //     } else {
     //       alert("로그인 실패");
@@ -69,7 +72,7 @@ const Login = () => {
           <img className="name" src={name} alt="위코드 이름" />
         </div>
         <form className="login_form">
-          <input
+          <Input
             type="text"
             placeholder="이메일"
             name="email"
@@ -77,7 +80,7 @@ const Login = () => {
             onChange={handleUserInfo}
             required
           />
-          <input
+          <Input
             type="password"
             placeholder="비밀번호"
             name="password"
