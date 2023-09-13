@@ -28,17 +28,14 @@ const Login = () => {
   console.log(userInfo);
 
   const goToMain = () => {
-    // navigate("/");
-
+    navigate("/");
+    //  //////////////////
     // const JoinToken = localStorage.getItem("JoinToken");
-
     // if (!JoinToken) {
     //   alert("회원가입을 먼저 진행해주세요");
-    navigate("/JoinInfo");
+    //   navigate("/JoinInfo");
     // }
-
-    //////////////////////////
-
+    // ////////////////////////
     // fetch("http://10.58.52.106:8000/users/login", {
     //   method: "POST",
     //   headers: {
