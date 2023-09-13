@@ -32,7 +32,7 @@ const JoinDone = () => {
               scale="large"
               shape="fill"
               onClick={() => {
-                navigate("/");
+                navigate("/login");
               }}
             >
               확인

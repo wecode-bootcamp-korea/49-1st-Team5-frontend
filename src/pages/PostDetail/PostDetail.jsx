@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./PostDetail.scss";
 import Button from "../../components/button/Button";
-import axios from "axios";
+// import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const PostDetail = () => {

@@ -3,55 +3,38 @@ import "./Login.scss";
 import logo from "../../assets/images/Logo.png";
 import name from "../../assets/images/logo_wecode.png";
 import { Link, useNavigate } from "react-router-dom";
+import Input from "../../components/Input/Input";
 import Button from "../../components/button/Button";
 
 const Login = () => {
   const navigate = useNavigate();
   const goToMain = () => {
-    fetch("http://10.58.52.106:8000/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        // if (result.status === 200) {
-        //   localStorage.setItem("token", result.token);
-        //   navigate("/");
-        // } else if (result.status === 400) {
-        //   alert("아이디, 비밀번호를 확인해주세요");
-        // } else if (result.status === 400) {
-        //   alert("비밀번호를 확인해주세요");
-        // } else {
-        //   alert("로그인 실패");
-        // }
-        localStorage.setItem("token", result.token);
-      });
-
-    // navigate("/");
+    navigate("/");
+    // fetch("http://10.58.52.134:8000/users/login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json;charset=utf-8",
+    //   },
+    //   body: JSON.stringify({
+    //     email: email,
+    //     password: password,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((result) => {
+    // if (result.status === 200) {
+    //   localStorage.setItem("token", result.token);
+    //   navigate("/");
+    // } else if (result.status === 400) {
+    //   alert("아이디, 비밀번호를 확인해주세요");
+    // } else if (result.status === 400) {
+    //   alert("비밀번호를 확인해주세요");
+    // } else {
+    //   alert("로그인 실패");
+    // }
+    //   localStorage.setItem("token", result.token);
+    // });
   };
-  // fetch("http://10.58.52.134:8000/users/login", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json;charset=utf-8",
-  //   },
-  //   body: JSON.stringify({
-  //     email: "mjpark@gmail.com",
-  //     name: "mjpark",
-  //     password: "123456789@",
-  //   }),
-  // })
-  // .then((res) => {res.json})
-  // .then((result) => {
-  //   if (res.success){
-  //       alert("로그인 완료");
-  //    }
-  //   });
 
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -80,14 +63,14 @@ const Login = () => {
           <img className="name" src={name} alt="위코드 이름" />
         </div>
         <form className="login_form">
-          <input
+          <Input
             type="text"
             placeholder="이메일"
             name="email"
             onChange={handleUserInfo}
             required
           />
-          <input
+          <Input
             type="password"
             placeholder="비밀번호"
             name="password"

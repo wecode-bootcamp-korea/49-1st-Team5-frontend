@@ -1,5 +1,6 @@
 import React from "react";
 import "./BasicInfomation.scss";
+import Input from "../../../../components/Input/Input";
 
 const BasicInfomation = (props) => {
   return (
@@ -9,21 +10,21 @@ const BasicInfomation = (props) => {
         <span>필수 사항</span>
       </div>
       <div className="input-infomation">
-        <input
+        <Input
           className="text-input"
           type="email"
           placeholder="이메일"
           onChange={props.onChange}
           name="email"
         />
-        <input
+        <Input
           className="text-input"
           type="password"
           placeholder="비밀번호"
           onChange={props.onChange}
           name="password"
         />
-        <input
+        <Input
           className="text-input"
           type="password"
           placeholder="비밀번호 확인"

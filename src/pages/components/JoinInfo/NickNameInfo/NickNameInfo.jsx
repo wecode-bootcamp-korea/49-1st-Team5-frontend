@@ -1,5 +1,6 @@
 import React from "react";
 import "./NickNameInfo.scss";
+import Input from "../../../../components/Input/Input";
 
 const NickNameInfo = (props) => {
   return (
@@ -9,7 +10,7 @@ const NickNameInfo = (props) => {
         <span>필수 사항</span>
       </div>
       <div className="input-infomation">
-        <input
+        <Input
           className="text-input"
           type="text"
           placeholder="닉네임"
@@ -17,7 +18,7 @@ const NickNameInfo = (props) => {
           name="nickname"
         />
         <div className="profile-upLoad">
-          <input
+          <Input
             type="file"
             id="file"
             onChange={props.onChange}
@@ -44,7 +45,8 @@ const NickNameInfo = (props) => {
               />
             </svg>
           </label>
-          <input
+          <Input
+            scale="middle"
             className="file-input"
             type="text"
             placeholder="파일을 선택해주세요."
