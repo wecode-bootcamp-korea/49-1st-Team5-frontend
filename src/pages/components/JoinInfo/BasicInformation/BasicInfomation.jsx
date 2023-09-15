@@ -35,12 +35,12 @@ const BasicInfomation = (props) => {
         />
         {isPasswordSame ? (
           <p className="pwDoneMessage">
-            <img src="/images/ic_done.png" />
+            <img src="/images/ic_done.png" alt="비밀번호 일치" />
             &nbsp;비밀번호가 일치합니다
           </p>
         ) : (
           <p className="pwErrorMessage">
-            <img src="/images/ic_caption.png" />
+            <img src="/images/ic_caption.png" alt="비밀번호 불일치" />
             &nbsp;비밀번호가 일치하지 않습니다
           </p>
         )}

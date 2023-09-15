@@ -111,7 +111,6 @@ const JoinInfo = () => {
   const idDataCheck =
     regex.test(email) && password.length >= 10 && nickname.length >= 1;
 
-  const passwordDataCheck = password === passwordCheck;
   console.log(memberData);
   return (
     <div className="join-info">
@@ -137,8 +136,8 @@ const JoinInfo = () => {
 
           <BasicInfomation
             onChange={onChangeUserInfo}
-            password={password}
-            passwordCheck={passwordCheck}
+            password={memberData.password}
+            passwordCheck={memberData.passwordCheck}
           />
 
           <NickNameInfo onChange={onChangeUserInfo} profileImg={profileImg} />
