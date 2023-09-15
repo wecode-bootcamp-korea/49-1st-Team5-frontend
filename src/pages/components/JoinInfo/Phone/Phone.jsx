@@ -1,5 +1,6 @@
 import React from "react";
 import "./Phone.scss";
+import Input from "../../../../components/Input/Input";
 
 const Phone = (props) => {
   return (
@@ -34,7 +35,8 @@ const Phone = (props) => {
           <option>016</option>
           <option>017</option>
         </select>
-        <input
+        <Input
+          scale="small"
           className="phone-input"
           type="text"
           placeholder="휴대폰 번호를 입력해주세요."
