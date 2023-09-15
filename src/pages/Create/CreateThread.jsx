@@ -15,7 +15,29 @@ const CreateThread = () => {
     setCreateData({ ...createData, [name]: value });
   };
 
-  // console.log(createData);
+  const fetchReq = () => {
+    // fetch("http://10.58.52.134:8000/users/ ", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json;charset=utf-8",
+    //     authorization: localStorage.getItem("token");
+    //   },
+    //   body: JSON.stringify({
+    //     content: createData
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((result) => {
+    // if (result.status === 200) {
+    //   alert("게시글이 등록되었습니다")
+    //   navigate("/");
+    //   console.log(createData);
+    // } else (result.status === 400) {
+    //   alert("게시글이 등록되지 않았습니다");
+    // }
+    // });
+  };
+
   return (
     <div className="thread-container">
       <div className="thread-main">
@@ -39,7 +61,7 @@ const CreateThread = () => {
           <Button scale="small" shape="outLine">
             취소
           </Button>
-          <Button scale="small" shape="fill">
+          <Button scale="small" shape="fill" onClick={fetchReq}>
             게시
           </Button>
         </div>

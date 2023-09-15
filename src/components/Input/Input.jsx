@@ -45,4 +45,6 @@ const Input = (props) => {
 // scale:
 // shape:
 
+// 1. props name 재배치
+
 export default Input;
