@@ -13,6 +13,7 @@ const Input = (props) => {
     disabled,
     scale,
     shape,
+    status,
   } = props;
 
   return (
@@ -27,6 +28,7 @@ const Input = (props) => {
       disabled={disabled}
       scale={scale}
       shape={shape}
+      status={status}
     />
   );
 };

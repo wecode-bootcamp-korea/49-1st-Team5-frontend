@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Main.scss";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/button/Button";
 
 const Main = () => {
   const [userData, setUserData] = useState([]);
   const [showList, setShowList] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
+  const [liked, setLiked] = useState(false);
 
   useEffect(() => {
     fetch("/data/ThreadMain.json")
@@ -38,39 +40,99 @@ const Main = () => {
     setShowList(storage);
   }, [userData, pageNumber]);
 
-  const navigator = useNavigate();
+  // useEffect(() => {
 
-  console.log(showList);
+  // },[])
+
+  const navigator = useNavigate();
+  const isLiked = () => {
+    if (!liked) {
+      setLiked(true);
+    } else {
+      setLiked(false);
+    }
+  };
+
+  // console.log(showList);
   return (
     <div className="main-container">
       <div className="main-content">
-        {showList.map((data) => {
+        {showList.map((data, i) => {
           return (
-            <div className="main-thread">
-              <div className="main-title">
-                <img
-                  className="main-profile-img"
-                  src={data.profile}
-                  alt="profile-image"
-                />
-                <h4>{data.name}</h4>
+            <div className="main-thread" key={data}>
+              <div className="main-profile">
+                <div className="main-title">
+                  {/* <p>{data.postId}</p> */}
+                  <img
+                    className="main-profile-img"
+                    src={data.profileImage}
+                    alt="profile_image"
+                  />
+                  <h4>{data.nickname}</h4>
+                </div>
+                {data.isMyPost ? (
+                  <div className="upDate">
+                    <span>{data.createdAt}</span>
+                    <Button shape="text" color="red">
+                      삭제
+                    </Button>
+                    <Button
+                      shape="text"
+                      onClick={() => {
+                        navigator("/ModifyThread");
+                      }}
+                    >
+                      수정
+                    </Button>
+                  </div>
+                ) : (
+                  <span>{data.createdAt}</span>
+                )}
+
+                <span />
               </div>
               <div>
-                <p>{data.textarea}</p>
+                <Button
+                  shape="content"
+                  onClick={() => {
+                    navigator(`/main/${data.postId}`);
+                  }}
+                >
+                  {data.content}
+                </Button>
+              </div>
+              <div className="main-profile-link">
+                <div className="main-profile-btn">
+                  <Button shape="text">좋아요 {data.likeCount}</Button>
+                  <Button shape="text">댓글 {data.comments.length}</Button>
+                </div>
+                <Button
+                  shape="icon"
+                  onClick={() => {
+                    return setLiked(i);
+                  }}
+                >
+                  {!liked ? (
+                    <img src="/images/heart.svg" alt="nonColor_heart" />
+                  ) : (
+                    <img src="/images/heartColor.svg" alt="color_herat" />
+                  )}
+                </Button>
               </div>
             </div>
           );
         })}
       </div>
       <div className="main-footer">
-        <button
-          className="main-create-btn"
+        <Button
+          scale="small"
+          shape="fill"
           onClick={() => {
             navigator("/createthread");
           }}
         >
           글 쓰기
-        </button>
+        </Button>
       </div>
     </div>
   );

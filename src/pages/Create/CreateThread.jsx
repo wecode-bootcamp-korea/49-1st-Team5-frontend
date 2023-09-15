@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./CreateThread.scss";
+import Button from "../../components/button/Button";
 
 const CreateThread = () => {
   const [createData, setCreateData] = useState({
-    textarea: "",
+    textArea: "",
   });
 
-  const { textarea } = createData;
+  const { textArea } = createData;
 
   const onChangeCreateData = (e) => {
     const { name, value } = e.target;
@@ -14,29 +15,31 @@ const CreateThread = () => {
     setCreateData({ ...createData, [name]: value });
   };
 
-  console.log(createData);
   return (
     <div className="thread-container">
       <div className="thread-main">
         <div className="thread-enter">
           <div className="thread-title-image">
-            <img src="/images/cat.jpeg" alt="profile-image" />
+            <img src="/images/cat.jpeg" alt="profile_image" />
           </div>
 
           <div className="thread-content">
             <div className="thread-name">Name</div>
             <textarea
-              className="thread-textarea"
+              className="thread-textArea"
               placeholder="스레드를 시작하세요."
-              name="textarea"
+              name="textArea"
               onChange={onChangeCreateData}
             />
           </div>
         </div>
-
         <div className="thread-footer">
-          <button className="thread-footer-cancel">취소</button>
-          <button className="thread-footer-create">게시</button>
+          <Button scale="small" shape="outLine">
+            취소
+          </Button>
+          <Button scale="small" shape="fill">
+            게시
+          </Button>
         </div>
       </div>
     </div>

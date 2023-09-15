@@ -4,39 +4,13 @@ import logo from "../../assets/images/Logo.png";
 import name from "../../assets/images/logo_wecode.png";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Input/Input";
+import Button from "../../components/button/Button";
 
 const Login = () => {
   const navigate = useNavigate();
-
-  const [userInfo, setUserInfo] = useState({
-    email: "",
-    password: "",
-  });
-
-  const { email, password } = userInfo;
-
-  const handleUserInfo = (event) => {
-    const { name, value } = event.target;
-    setUserInfo({ ...userInfo, [name]: value });
-  };
-
-  let regex = new RegExp(
-    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
-  );
-  const isActiveButton = regex.test(email) && password.length >= 10;
-
-  console.log(userInfo);
-
   const goToMain = () => {
     navigate("/");
-    //  //////////////////
-    // const JoinToken = localStorage.getItem("JoinToken");
-    // if (!JoinToken) {
-    //   alert("회원가입을 먼저 진행해주세요");
-    //   navigate("/JoinInfo");
-    // }
-    // ////////////////////////
-    // fetch("http://10.58.52.106:8000/users/login", {
+    // fetch("http://10.58.52.134:8000/users/login", {
     //   method: "POST",
     //   headers: {
     //     "Content-Type": "application/json;charset=utf-8",
@@ -48,18 +22,38 @@ const Login = () => {
     // })
     //   .then((res) => res.json())
     //   .then((result) => {
-    //     if (result.message === "LOGIN_COMPLETE") {
-    //       localStorage.setItem("token", result.token);
-    //       navigate("/");
-    //     } else if (result.message === "EMAIL_OR_PASSWORD_ERROR") {
-    //       alert("아이디, 비밀번호를 확인해주세요");
-    //     } else if (result.message === "PASSWORD_LENGTHERROR") {
-    //       alert("비밀번호를 확인해주세요");
-    //     } else {
-    //       alert("로그인 실패");
-    //     }
-    //   });
+    // if (result.status === 200) {
+    //   localStorage.setItem("token", result.token);
+    //   navigate("/");
+    // } else if (result.status === 400) {
+    //   alert("아이디, 비밀번호를 확인해주세요");
+    // } else if (result.status === 400) {
+    //   alert("비밀번호를 확인해주세요");
+    // } else {
+    //   alert("로그인 실패");
+    // }
+    //   localStorage.setItem("token", result.token);
+    // });
   };
+
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = userInfo;
+
+  const handleUserInfo = (event) => {
+    const { name, value } = event.target;
+
+    setUserInfo({ ...userInfo, [name]: value });
+  };
+
+  let regex = new RegExp(
+    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
+  );
+
+  const isActiveButton = regex.test(email) && password.length >= 10;
 
   return (
     <div className="main">
@@ -73,7 +67,6 @@ const Login = () => {
             type="text"
             placeholder="이메일"
             name="email"
-            value={email}
             onChange={handleUserInfo}
             required
           />
@@ -81,18 +74,26 @@ const Login = () => {
             type="password"
             placeholder="비밀번호"
             name="password"
-            value={password}
             onChange={handleUserInfo}
             required
           />
-          <button
+          <Button
+            scale="large"
+            shape="fill"
+            disabled={!isActiveButton}
+            onClick={goToMain}
+          >
+            로그인
+          </Button>
+
+          {/* <button
             type="button"
             onClick={goToMain}
             className={`loginButton ${isActiveButton ? "" : "disabled"}`}
             disabled={!isActiveButton}
           >
             로그인
-          </button>
+          </button> */}
         </form>
         <ul className="search">
           <li>

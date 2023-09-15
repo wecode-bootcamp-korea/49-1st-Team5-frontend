@@ -6,6 +6,7 @@ import BasicInfomation from "../components/JoinInfo/BasicInformation/BasicInfoma
 import NickNameInfo from "../components/JoinInfo/NickNameInfo/NickNameInfo";
 import Phone from "../components/JoinInfo/Phone/Phone";
 import Birth from "../components/JoinInfo/Birth/Birth";
+import Button from "../../components/button/Button";
 
 const JoinInfo = () => {
   const [memberData, setMemberData] = useState({
@@ -48,8 +49,6 @@ const JoinInfo = () => {
     years.push(i);
   }
 
-  console.log(year, month, day);
-
   let months = [];
   for (let i = 1; i <= 12; i++) {
     if (i < 10) {
@@ -77,47 +76,57 @@ const JoinInfo = () => {
     setMemberData({ ...memberData, [name]: value });
   };
 
+  const FullNumber = nationalNumber + phoneNumber;
+  const FullBirth = `${year}-${month}-${day}`;
+  console.log(FullBirth);
+
+  const JoinInfoBtn = () => {
+    fetch("http://10.58.52.106:8000/Users/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify({
+        email: email,
+        nickname: nickname,
+        password: password,
+        phone_number: FullNumber,
+        birth_day: FullBirth,
+      }),
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then((result) => {
+        console.log(result);
+        // if (result.message === "SUCCESS") {
+        //   alert("로그인 완료");
+        // }
+      });
+  };
+  let regex = new RegExp(
+    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
+  );
+
   const idDataCheck =
-    email.includes("@") &&
-    email.includes(".") &&
-    password.length >= 10 &&
-    nickname.length >= 1;
+    regex.test(email) && password.length >= 10 && nickname.length >= 1;
+
   const passwordDataCheck = password === passwordCheck;
-
-  // console.log(memberData, nationalNumber + phoneNumber);
-
+  console.log(memberData);
   return (
     <div className="join-info">
       <div className="join-info-container">
         <div className="header">
-          <div className="handle-back">
-            <button
-              className="prev"
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-
-                navigator("/");
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                fill="none"
-              >
-                <path
-                  d="M22.5 10L12.5 20L22.5 30"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-miterlimit="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-            <label for="prev">뒤로</label>
+          <div
+            className="handle-back"
+            onClick={() => {
+              navigator("/");
+            }}
+          >
+            <Button shape="icon">
+              <img src="/images/Back_arrow.svg" alt="Back_arrow" />
+              <label for="prev">뒤로</label>
+            </Button>
           </div>
         </div>
 
@@ -126,7 +135,11 @@ const JoinInfo = () => {
             <h1>회원가입</h1>
           </div>
 
-          <BasicInfomation onChange={onChangeUserInfo} />
+          <BasicInfomation
+            onChange={onChangeUserInfo}
+            password={password}
+            passwordCheck={passwordCheck}
+          />
 
           <NickNameInfo onChange={onChangeUserInfo} profileImg={profileImg} />
 
@@ -134,26 +147,29 @@ const JoinInfo = () => {
 
           <Birth
             year={year}
-            month={month}
-            day={day}
             years={years}
+            month={month}
             months={months}
+            day={day}
             days={days}
             dateForm={dateForm}
             setDateForm={setDateForm}
           />
         </div>
-        <form className="join-button">
-          <button
-            className="btn"
-            type="button"
-            // style={{
-            //   background: idDataCheck && passwordDataCheck ? "#2d71f7" : "gray",
-            // }}
-            disabled={idDataCheck && passwordDataCheck ? false : true}
+        <form
+          className="join-button"
+          onClick={() => {
+            navigator("/joindone");
+          }}
+        >
+          <Button
+            scale="large"
+            shape="fill"
+            disabled={!idDataCheck}
+            onClick={JoinInfoBtn}
           >
             회원 가입
-          </button>
+          </Button>
         </form>
       </div>
     </div>
